@@ -6,30 +6,32 @@ import { units } from './units'
 function App() {
   const [result, setResult] = useState(0)
   const [state,setState] = useState({
-        input : " ",
-        factorFrom:"",
-        factorTo:"",
+        input : 0,
+        factorFrom:0,
+        factorTo:0,
   })
   useEffect(() => {
     console.log("input",state.input)
     console.log("factorTo",state.factorTo)
     console.log("factorFrom",state.factorFrom)
+    console.log("result",result)
+
   });
 
     const inputHandler = (event) =>{
-      setState({input:event.target.value})
+      setState({...state,input:event.target.value})
     
     }
     const handleSelectFrom = (event) => {
-      setState({factorFrom:event.target.value})
+      setState({...state ,factorFrom:event.target.value})
     }
     const handleSelectTo = (event) => {
-      setState({factorTo:event.target.value})
+      setState({...state,factorTo:event.target.value})
         
     }
     const handleConvert = () => {
-      let res = state.input * state.factorFrom / state.factorTo
-      setResult(res)
+     
+      setResult( state.input * state.factorFrom / state.factorTo)
     }
     
   return (
