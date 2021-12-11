@@ -1,29 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Select from './components/Select'
 import Input from './components/Input'
 import { units } from './units'
 
 function App() {
   const [result, setResult] = useState(0)
-  const [input,setInput] = useState("")
-  const [factorFrom, setFactorFrom] = useState("")
-  const [factorTo, setFactorTo] = useState("")
+  const [state,setState] = useState({
+        input : " ",
+        factorFrom:"",
+        factorTo:"",
+  })
+  useEffect(() => {
+    console.log("input",state.input)
+    console.log("factorTo",state.factorTo)
+    console.log("factorFrom",state.factorFrom)
+  });
 
     const inputHandler = (event) =>{
-      setInput(event.target.value)
-      console.log(input)
+      setState({input:event.target.value})
+    
     }
     const handleSelectFrom = (event) => {
-      setFactorFrom(event.target.value)
+      setState({factorFrom:event.target.value})
     }
     const handleSelectTo = (event) => {
-      setFactorTo(event.target.value)
-        console.log(factorTo)
+      setState({factorTo:event.target.value})
+        
     }
     const handleConvert = () => {
-      let res = input * factorFrom / factorTo
+      let res = state.input * state.factorFrom / state.factorTo
       setResult(res)
-    
     }
     
   return (
